@@ -56,12 +56,12 @@ const createApp = () => {
     app.use(express.static(clientBuildPath));
 
     // SPA catch-all: serve React app for all non-API routes
-    app.get('*', (req, res) => {
+    app.use((req, res) => {
       res.sendFile(path.join(clientBuildPath, 'index.html'));
     });
   } else {
     // In development, show info endpoint
-    app.get('*', (req, res) => {
+    app.use((req, res) => {
       res.status(404).json(sendError(`Route ${req.originalUrl} not found`, 404));
     });
   }
