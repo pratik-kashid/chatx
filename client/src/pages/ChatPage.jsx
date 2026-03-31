@@ -710,7 +710,7 @@ export function ChatPage() {
   };
 
   return (
-    <div className="flex h-full min-h-[calc(100vh-7rem)] flex-col gap-4 lg:min-h-0">
+    <div className="mx-auto flex h-full min-h-[calc(100vh-7rem)] max-w-[1640px] flex-col gap-4 px-3 sm:px-5 lg:px-8">
       {socketError ? (
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
           Realtime updates are having trouble connecting. Chat history still works,
@@ -739,8 +739,8 @@ export function ChatPage() {
         </div>
       </div>
 
-      <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[360px_minmax(0,1fr)]">
-        <div className={mobileView === 'chat' ? 'hidden md:block' : 'block'}>
+      <div className="grid min-h-[calc(100vh-16rem)] flex-1 gap-4 lg:grid-cols-[360px_minmax(0,1fr)]">
+        <div className={mobileView === 'chat' ? 'hidden md:block h-full' : 'block h-full'}>
           <ConversationList
             conversations={conversations}
             selectedConversationId={selectedConversationId}
@@ -758,7 +758,7 @@ export function ChatPage() {
           />
         </div>
 
-        <div className={mobileView === 'list' ? 'hidden md:block' : 'block'}>
+        <div className={mobileView === 'list' ? 'hidden md:block h-full' : 'block h-full'}>
           <ChatPanel
             key={selectedConversation?.id || 'empty'}
             conversation={selectedConversation}
