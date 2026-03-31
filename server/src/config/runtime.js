@@ -5,7 +5,18 @@ const DEVELOPMENT_JWT_SECRET = 'chatx-dev-jwt-secret-change-me';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+/**
+ * Get allowed CORS origins
+ * In production, the frontend is served from the same origin so we allow all origins
+ * In development, only allow the dev frontend URL
+ */
 function getAllowedOrigins() {
+  // In production, frontend is served from same domain
+  if (isProduction) {
+    return ['*']; // or you can restrict to specific Railway domain
+  }
+
+  // Dev: allow vite dev server and localhost variants
   const rawOrigins =
     process.env.FRONTEND_URLS ||
     process.env.FRONTEND_URL ||

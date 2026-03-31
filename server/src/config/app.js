@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const errorHandler = require('../middleware/errorHandler');
 const { sendError } = require('../utils/response');
@@ -48,10 +49,22 @@ const createApp = () => {
   app.use('/api/conversations', require('./routes/conversations'));
   app.use('/api/messages', require('./routes/messages'));
 
-  // 404 handler
-  app.use((req, res) => {
-    res.status(404).json(sendError(`Route ${req.originalUrl} not found`, 404));
-  });
+  // Serve static files from React build in production
+  const isDev = process.env.NODE_ENV !== 'production';
+  if (!isDev) {
+    const clientBuildPath = path.join(__dirname, '../../client/dist');
+    app.use(express.static(clientBuildPath));
+
+    // SPA catch-all: serve React app for all non-API routes
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(clientBuildPath, 'index.html'));
+    });
+  } else {
+    // In development, show info endpoint
+    app.get('*', (req, res) => {
+      res.status(404).json(sendError(`Route ${req.originalUrl} not found`, 404));
+    });
+  }
 
   // Error handling middleware (must be last)
   app.use(errorHandler);
