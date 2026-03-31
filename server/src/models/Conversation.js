@@ -64,14 +64,12 @@ conversationSchema.index({ participants: 1 });
 // Index for faster sorting by last message
 conversationSchema.index({ updatedAt: -1 });
 
-conversationSchema.pre('validate', function (next) {
+conversationSchema.pre('validate', async function () {
   if (!this.isGroup && Array.isArray(this.participants) && this.participants.length === 2) {
     this.conversationKey = buildConversationKey(...this.participants);
   } else {
     this.conversationKey = null;
   }
-
-  next();
 });
 
 // Instance method to add participant
