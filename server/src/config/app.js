@@ -44,10 +44,10 @@ const createApp = () => {
   });
 
   // API Routes
-  app.use('/api/auth', require('./routes/auth'));
-  app.use('/api/users', require('./routes/users'));
-  app.use('/api/conversations', require('./routes/conversations'));
-  app.use('/api/messages', require('./routes/messages'));
+  app.use('/api/auth', require('../routes/auth'));
+  app.use('/api/users', require('../routes/users'));
+  app.use('/api/conversations', require('../routes/conversations'));
+  app.use('/api/messages', require('../routes/messages'));
 
   // Serve static files from React build in production
   const isDev = process.env.NODE_ENV !== 'production';
