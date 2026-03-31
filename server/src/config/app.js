@@ -52,7 +52,9 @@ const createApp = () => {
   // Serve static files from React build in production
   const isDev = process.env.NODE_ENV !== 'production';
   if (!isDev) {
-    const clientBuildPath = path.join(__dirname, '../../client/dist');
+    // __dirname is /app/server/src/config in production container
+    // Root client build lives at /app/client/dist
+    const clientBuildPath = path.join(__dirname, '../../../client/dist');
     app.use(express.static(clientBuildPath));
 
     // SPA catch-all: serve React app for all non-API routes
