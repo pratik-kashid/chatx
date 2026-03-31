@@ -327,10 +327,12 @@ docs/
 - Includes auth, authorization, validation, presence, and realtime state syncing
 - Uses reusable frontend structure instead of a single-page prototype
 - Reflects product thinking with loading, empty, error, retry, and disconnected states
-
+- 
 ## License
 
 MIT
-#   c h a t x  
- #   c h a t x  
+#   c h a t x 
+ 
+ #   c h a t x 
+ 
  
