@@ -94,10 +94,9 @@ messageSchema.methods.getReadCount = function () {
 };
 
 // Middleware to populate sender details before returning
-messageSchema.pre(/^find/, function (next) {
-  // Only auto-populate sender if explicitly requested via .populate()
-  // This keeps queries flexible
-  next();
+messageSchema.pre(/^find/, async function () {
+  // Pre-find hook is intentionally kept to avoid switching to callback style
+  // Existing code simply forwards to next; async hook avoids next arg issues
 });
 
 module.exports = mongoose.model('Message', messageSchema);
