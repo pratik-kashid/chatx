@@ -17,7 +17,8 @@ const createApp = () => {
   app.use(
     cors({
       origin(origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
+        // Allow same-origin or explicit wildcard in production
+        if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
           callback(null, true);
           return;
         }
