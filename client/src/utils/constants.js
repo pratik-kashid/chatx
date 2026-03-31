@@ -10,11 +10,15 @@ function normalizeApiBaseUrl(value) {
 }
 
 // API Configuration
-export const API_BASE_URL = normalizeApiBaseUrl(
-  import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
-);
+const defaultApiBase = import.meta.env.VITE_API_URL
+  ? import.meta.env.VITE_API_URL
+  : import.meta.env.PROD
+  ? '/api'
+  : 'http://localhost:5000/api';
+
+export const API_BASE_URL = normalizeApiBaseUrl(defaultApiBase);
 export const SOCKET_URL = trimTrailingSlash(
-  import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000'
+  import.meta.env.VITE_SOCKET_URL || (import.meta.env.PROD ? '' : 'http://localhost:5000')
 );
 
 // Local Storage Keys
