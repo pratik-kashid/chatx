@@ -366,10 +366,6 @@ docs/
 - **Production-Ready UX:** Reflects product thinking with loading, empty, error, retry, and disconnected states
 - **Portfolio-Ready:** Clean enough for portfolio use while realistic about real-world app structure
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ---
 
 **Built with ❤️ using the MERN stack**
