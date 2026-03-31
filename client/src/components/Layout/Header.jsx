@@ -40,12 +40,14 @@ export function Header() {
     <header className="border-b border-slate-800/80 bg-slate-950/75 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/chat" className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500 text-sm font-bold text-slate-950 shadow-lg shadow-sky-500/20">
-            C
-          </span>
+          <img
+            src="/favicon.svg"
+            alt="ChatX logo"
+            className="h-10 w-10 rounded-2xl border border-sky-300/30 bg-sky-500/10 p-1 shadow-lg shadow-sky-500/20"
+          />
           <div>
             <p className="text-sm font-semibold tracking-wide text-white">ChatX</p>
-            <p className="text-xs text-slate-400">Team chat workspace</p>
+            <p className="text-xs text-slate-400">Secure, friendly team messaging</p>
           </div>
         </Link>
 

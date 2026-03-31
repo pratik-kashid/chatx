@@ -14,7 +14,7 @@ export function Input({
         type={type}
         aria-invalid={Boolean(error)}
         className={[
-          'h-11 w-full rounded-xl border bg-slate-950/60 px-4 text-slate-100 outline-none',
+          'h-11 w-full rounded-xl border bg-slate-900/80 px-4 text-slate-100 outline-none',
           'placeholder:text-slate-500 transition duration-200',
           'focus:border-sky-400 focus:ring-4 focus:ring-sky-500/20',
           error ? 'border-rose-500' : 'border-slate-700',
