@@ -2,7 +2,15 @@ const OBJECT_ID_PATTERN = /^[0-9a-fA-F]{24}$/;
 const CONTROL_CHARS_PATTERN = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g;
 
 function normalizeString(value) {
-  return typeof value === 'string' ? value.trim() : '';
+  if (typeof value === 'string') {
+    return value.trim();
+  }
+
+  if (value !== null && value !== undefined && typeof value.toString === 'function') {
+    return value.toString().trim();
+  }
+
+  return '';
 }
 
 function normalizeEmail(value) {
